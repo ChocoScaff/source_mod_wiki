@@ -38,7 +38,7 @@ Prop_static
 
 ## Ajouter une entité dans le répertoire de hammer
 
-Pour ajouter une entité, nous allons créer un fichier *.fdg* avec sa nous pouvons ajouter notre entité écrit en C++ cf. [8.4 Ajouter une entité](#84-ajouter-une-entité)
+Pour ajouter une entité, nous allons créer un fichier *.fdg* avec sa nous pouvons ajouter notre entité écrit en C++ cf. [Ajouter une entité](programmation.md#ajouter-une-entite)
 
 Ici pour ajouter une arme.
 ```cpp

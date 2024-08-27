@@ -98,7 +98,7 @@ Permet de créer une échelle pour le jeu, elle est invisible pour le joueur
 
 Texture d'Optimisation
 
-Les block d'optimisation sont décrits cf. [7.2 optimisation](#72-texture-doptimisation)
+Les block d'optimisation sont décrits cf. [optimisation](optimisation.md#texture-doptimisation)
 
 ## Conseils pour créer ses cartes
 

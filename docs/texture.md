@@ -138,7 +138,7 @@ Pour créer, nous avons besoin des deux textures est une texture *modulate* roug
 }
 ```
 
-Pour utiliser la texture blend  cf.[5.6 Utiliser les textures Blends](#56-utiliser-les-textures-blends)
+Pour utiliser la texture blend  cf.[Utiliser les textures Blends](hammer.md#utiliser-les-textures-blends)
 
 ## Texture Devs
 

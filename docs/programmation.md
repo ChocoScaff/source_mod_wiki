@@ -33,7 +33,7 @@ Pour apprendre à utiliser Git [cliquer ici](https://www.youtube.com/watch?v=V6Z
 
 ## Compiler sur Windows
 
-### 8.2.1 Installer *Visual Studio*
+### Installer *Visual Studio*
 
 Pour modifier le code source de notre mode, nous avons besoin de *visual studio* télécharger *visual studio* avec le lien au début du chapitre.
 
@@ -302,7 +302,7 @@ LINK_ENTITY_TO_CLASS(message_player, Message_Player);
 ```
 On peut placer notre entité dans *hammer*.
 
-<span style="color: #F00E0E">Attention</span> : Il se peut que votre entité crée ne soit pas répertorié dans *hammer* et que vous avez le logo obsolète pour ajouter votre *class* à la liste, cf. [6.2 Ajouter une entité dans le répertoire de hammer](#62-ajouter-une-entité-dans-le-répertoire-de-hammer).
+<span style="color: #F00E0E">Attention</span> : Il se peut que votre entité crée ne soit pas répertorié dans *hammer* et que vous avez le logo obsolète pour ajouter votre *class* à la liste, cf. [Ajouter une entité dans le répertoire de hammer](entity.md#ajouter-une-entite-dans-le-repertoire-de-hammer).
 
 ![](img/image84.png)
 

@@ -55,8 +55,6 @@ sur **Source Engine QC Complies**
 **QC Path:** 
 - Fichier *.qc* avec tout les infos de compilation par *.qc* dans le même dossier que *.smd* (modelsrc)
 
-(pour plus d'info sur le fichier QC cf. [3.3 faire un fichier QC](#33-faire-un-fichier-qc))
-
 une fois appuyer sur *Compile All Now* cela va activer la compilation.
 
 La compilation se passe en 2 étape vous aller compiler le modèle 3D en *.smd* puis en *.mdl*.
