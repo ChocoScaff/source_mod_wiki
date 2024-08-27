@@ -2,6 +2,11 @@ site_name: Source Mod Wiki
 
 theme: readthedocs
 
+repo_name: "ChocoScaff/source_mod_wiki"
+repo_url: https://github.com/ChocoScaff/source_mod_wiki
+
+edit_uri: edit/master/docs/
+
 nav:
     - Branche du moteur: branche.md
     - Répertoire et création d un projet: repertoire_et_creation_dun_projet.md
