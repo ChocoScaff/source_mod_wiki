@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Les Outils d'hammer - Source Mod Wiki</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Source Mod Wiki</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../credit.md" class="nav-link">Credit</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#les-outils-dhammer" class="nav-link">Les Outils d'hammer</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#outils" class="nav-link">Outils</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#fenetre" class="nav-link">Fenêtre</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#faire-une-rotation" class="nav-link">Faire une Rotation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#cree-un-cylindre-et-une-arche" class="nav-link">Crée un Cylindre et une Arche</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#configurer-hammer" class="nav-link">Configurer Hammer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#utiliser-les-textures-blends" class="nav-link">Utiliser les textures Blends</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="les-outils-dhammer">Les Outils d'hammer</h1>
+<p><em>Hammer</em> est un éditeur de map permettant de transformer une map que l'on a dessinée vers un format pouvant être lu par le moteur du jeu. Plusieurs conversions sont faite d'abord, on met le fichier <em>.vmf</em> qui est un fichier texte vers le format <em>.bps</em>, puis on découpe l'espace avec vis, pour l'optimisation et on finit par calculer la lumière avec rad.</p>
+<p><img alt="" src="../img/image55.png" /></p>
+<h2 id="outils">Outils</h2>
+<p>Comme beaucoup d'autres logiciels <em>Hammer</em> comporte des outils.</p>
+<p><img alt="" src="../img/image8.png" /></p>
+<p>Selection Tools</p>
+<ul>
+<li>
+<p>Racourcis Shift + S</p>
+</li>
+<li>
+<p>Il permet tout simplement de sélectionner un objet.</p>
+</li>
+</ul>
+<p>Magnify</p>
+<ul>
+<li>
+<p>RacourcisShift + G</p>
+</li>
+<li>
+<p>Permet de zoomer.</p>
+</li>
+</ul>
+<p>Caméra</p>
+<ul>
+<li>Racourcis Shift + C</li>
+</ul>
+<p>Entity tools</p>
+<ul>
+<li>
+<p>Racourcis Shift + E</p>
+</li>
+<li>
+<p>Permet de créer des entités objet, lumières, personnages. etc...</p>
+</li>
+</ul>
+<p>Block Tools</p>
+<ul>
+<li>
+<p>Racourics Shift + B</p>
+</li>
+<li>
+<p>Permet la création d'un block.</p>
+</li>
+</ul>
+<p>Toogle Texture</p>
+<ul>
+<li>Permet l'application d'une texture</li>
+</ul>
+<p>Apply current Texture</p>
+<ul>
+<li>Permet d'appliquer la texture sur le block sélectionné.</li>
+</ul>
+<p>Racourcis utiles</p>
+<ul>
+<li>
+<p>[ ou <em>alt + a</em> ajoutes des lignes sur la grille.</p>
+</li>
+<li>
+<p>] ou <em>alt + s</em> enlève des lignes sur la grille.</p>
+</li>
+<li>
+<p>1 à 0 zoom plan en 2D.</p>
+</li>
+<li>
+<p>niveau de zoom 1 faible. 0 élevé.</p>
+</li>
+<li>
+<p>shift + Z n'affiche qu'une seule fenêtre.</p>
+</li>
+<li>
+<p>shift + W magnétique.</p>
+</li>
+</ul>
+<h2 id="fenetre">Fenêtre</h2>
+<p><img alt="" src="../img/image57.png" /></p>
+<p><em>Hammer</em> de divise en 4 fenêtres <em>"View"</em> en anglais</p>
+<p>De gauche à droite et de haut en bas.</p>
+<p>La première "<em>View</em>" caméra est une "3D Textured Polygons", la deuxième view est une "2D top (x/y)", la troisième view est une "2D front (y/z)" la quatrième view est une "2D side (x/z)".</p>
+<p>Nous pouvons changer les <em>view</em> en cliquant sur une view puis sur le panneau du haut pour changer de <em>view</em>.</p>
+<p><img alt="" src="../img/image58.png" /></p>
+<h2 id="faire-une-rotation">Faire une Rotation</h2>
+<p>Il existe plusieurs moyens de faire une rotation</p>
+<p>Nous pouvons le faire de manière manuel. Pour cela, il faut cliquer une fois sur un objet depuis une fenêtre "<em>2D View</em>" vous devez voir des ronds et non des carrés sur l'objet, la rotation depuis une croix celte placer au mileu de l'objet nous pouvons la déplacer pour changer l'angle de rotation.</p>
+<p><img alt="" src="../img/image59.png" /></p>
+<p>Sinon depuis une "2D View' faire un clique droit cliquer sur "Transform" rac ctrl+m, nous avons le choix entre changer la rotation (Rotate), l'échelle (Scale) et aussi la position (move).</p>
+<h2 id="cree-un-cylindre-et-une-arche">Crée un Cylindre et une Arche</h2>
+<p>Avec l'outils Block tracé changer <em>Objects</em> en bas à droite, vous aurez le choix entre.</p>
+<p><img alt="" src="../img/image9.png" /></p>
+<ul>
+<li><em>"Cylinder"</em> pour faire un cylindre </li>
+<li>"<em>Arch</em>" pour créer une arche </li>
+<li>"<em>sphere</em>" pour créer une sphère </li>
+<li>"<em>Torus</em>" pour créer une forme de donut </li>
+<li>"<em>Wedge</em>" pour créer un triangle</li>
+<li>"<em>Spike</em>" pour créer une forme pointu</li>
+</ul>
+<p><img alt="" src="../img/image10.png" /></p>
+<h2 id="configurer-hammer">Configurer Hammer</h2>
+<p><img alt="" src="../img/image60.png" /> <img alt="" src="../img/image61.png" /></p>
+<p>-<strong>Configuration</strong> fait Edit et ajouter un nom à votre configuration</p>
+<p>-<strong>Game Data Files</strong> ajouter les fichiers <em>.fgd</em> de votre mod</p>
+<p><strong>-Texture Format</strong> laisser en <em>Half-Life 2</em></p>
+<p><strong>-Map Type</strong> laisser en <em>Half-Life 2</em></p>
+<p><strong>-Default PointEntity class</strong> Vous pouvez mettre l'entity par défaut quand vous ajoutez une.</p>
+<p><strong>-Default SolidEntity class</strong> Mettre le <em>SolidEntity</em> par défault</p>
+<p><strong>-Cordon texture</strong> Metter <em>tools/toolsskybox</em></p>
+<p>-<strong>Game Executable Directory</strong> Mettre le <em>.exe</em> de votre mod (hl2.exe)</p>
+<p>-<strong>Hammer VMF Directory</strong> Mettre le dossier <em>mapsrc</em> de votre mod</p>
+<p>-<strong>Game Executable</strong> Mettre le <em>.exe</em> de votre mod</p>
+<p><strong>-BSP Executable</strong> Mettre <em>bin/vbsp.exe</em></p>
+<p><strong>-VIS Executable</strong> Mettre <em>bin/vvis.exe</em></p>
+<p><strong>-RAD Executable</strong> Mettre <em>bin/vrad.exe</em></p>
+<p><strong>-Place Compiled maps in this directory before running the game</strong> Mettre le dossier maps de votre mod</p>
+<h2 id="utiliser-les-textures-blends">Utiliser les textures Blends</h2>
+<p>Crée un displacement de votre face sélectionner dans <em>Hammer</em> avec l'outil <strong>toggle texture aplication</strong>.</p>
+<p><img alt="" src="../img/image62.png" /></p>
+<p>Il suffit maintenant d'utiliser l'option <strong>Paint Alpha</strong>, pour peindre notre texture cf. <a href="../texture/#texture-blend">Texture Blend</a></p>
+<div style="page-break-after: always"></div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

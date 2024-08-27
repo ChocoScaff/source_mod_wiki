@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Les Textures - Source Mod Wiki</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Source Mod Wiki</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../credit.md" class="nav-link">Credit</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#les-textures" class="nav-link">Les Textures</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#cree-une-texture" class="nav-link">Crée une Texture</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#cree-une-normal-map" class="nav-link">Crée une normal map</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#bump-map" class="nav-link">Bump Map</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#materials" class="nav-link">Materials</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#convertir-une-texture-en-vtf" class="nav-link">Convertir une texture en VTF</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#changer-le-shader-de-la-texture" class="nav-link">Changer le shader de la texture</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#texture-blend" class="nav-link">Texture Blend</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#texture-devs" class="nav-link">Texture Devs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="les-textures">Les Textures</h1>
+<p><a href="https://github.com/NeilJed/VTFLib">https://github.com/NeilJed/VTFLib</a></p>
+<p>Une texture est une ou plusieurs images que nous allons utiliser en jeu, que ce soit pour l'interface, les murs des bâtiments ou les modèles 3D.</p>
+<p>Pour utiliser les images, nous avons besoins de les convertis dans un format le <em>.VTF</em> et ensuite les répertorier avec un <em>.VMF</em>.</p>
+<h2 id="cree-une-texture">Crée une Texture</h2>
+<p>Nous avons plusieurs moyens de faire une texture, cela peut se faire avec un dessin ou en prenant une photo.</p>
+<p>Les dimensions des textures sont le plus souvent des multiples de 2 <em>256x256px, 512x512px</em>.</p>
+<p>Malheureusement cela ne suffit pas à créer une texture ! En effet, certaines textures sont composées de plusieurs Images comme pour la réflexion de la lumière, la profondeur etc... Quand la texture possède cela, on appelle sa un <em>materials</em>.</p>
+<p>Pour plus de détails cliquer ici <a href="https://www.youtube.com/watch?v=Kt3KqKL1HZE">Web TV - #10 La 3D : Améliorer les Textures</a></p>
+<p><img alt="Bump map à Gauche, normal map au milieu et difusse texture à droite" src="../img/image26.jpg" /></p>
+<h2 id="cree-une-normal-map">Crée une normal map</h2>
+<p><img alt="" src="../img/image27.jpg" /></p>
+<p>Une normal crée des effets de reliefs sur la texture</p>
+<p><img alt="" src="../img/image28.png" /></p>
+<p>Pour en créer une, il faut importer sa texture sur un logiciel de retouche d'image comme Gimp ou Photoshop voici comment faire.</p>
+<h3 id="photoshop">Photoshop</h3>
+<p>Filter → 3D → Generate Normal Map</p>
+<p>il suffit d'exporter sa normal File → Export</p>
+<h3 id="gimp">Gimp</h3>
+<p>Filter-&gt;generic-&gt;Normal map</p>
+<h3 id="vtfedit">VTFEdit</h3>
+<p>Quand vous importer une texture, cocher «Generate Normal Map».</p>
+<p><img alt="" src="../img/image29.png" /></p>
+<h2 id="bump-map">Bump Map</h2>
+<p>Une Bump Map permet de simuler les bosses et les creux</p>
+<p>Comme pour la normal map le bump mapping va convertir l'image en une autre image, une image en nuance de gris, en blanc ce sont les bosses et en noir ce sont les creux.</p>
+<p><img alt="" src="../img/image30.png" /></p>
+<h2 id="materials">Materials</h2>
+<p>Le materials regroupe toutes les textures qui compose notre image en un seul fichier</p>
+<p><img alt="" src="../img/image38.png" /></p>
+<h2 id="convertir-une-texture-en-vtf">Convertir une texture en VTF</h2>
+<p><a href="https://github.com/NeilJed/VTFLib">https://github.com/NeilJed/VTFLib</a></p>
+<p>Hammer ne lit que les fichiers <em>VTF</em>, pour <em>Valve Texture Format</em>.</p>
+<p>Heureusement, nous avons le logiciel <em>VTFLib</em> pour convertir en VTF.</p>
+<p>Utiliser le logiciel <em>VTFLib</em>. (Ce n'est pas compliqué, il est en lien juste en haut)</p>
+<p>Vous avez juste faire Import votre Image et magique, elle est convertit en <em>VTF</em> !</p>
+<p>Sauvegarder là et placer là, dans le dossier materials de votre mod.</p>
+<p><img alt="" src="../img/image31.png" /></p>
+<p>Le fichier VMT pour <em>Valve Material</em> indique, tout les image dans la texture. Il crée un <em>material</em>.</p>
+<p>Nous allons importer le fichier image puis exporter en VMT.</p>
+<p><em>Tools-&gt;Create_VMT</em></p>
+<p><img alt="" src="../img/image32.png" /></p>
+<p>On va mettre tous les éléments qui constitue notre texture (normal, bump, ect..). 
+Il reste plus que l'on mette sa dans le dossier «<em>materials</em>» et c'est bon.</p>
+<p>(Attention <em>VMT</em> est juste un fichier texte normal, n'oublier pas de mettre les fichiers <em>VTF</em> avec.)</p>
+<h2 id="changer-le-shader-de-la-texture">Changer le shader de la texture</h2>
+<p>Votre Texture à un Shader, par default c'est <em>LightmappedGeneric</em> qui fait adapter pour les textures de mur.</p>
+<p><img alt="" src="../img/image33.png" /></p>
+<p>Pour les modèles 3D le <em>.vmt</em> doit être en "<em>VertexlitGeneric</em>" comme shader.</p>
+<p>Maintenant, vous pouvez créer et placer vos <em>.vmt</em> dans le même dossier que votre texture (materials).</p>
+<p>Vous devriez avoir quelque chose qui devrait ressemble à sa.</p>
+<p>(<em>«modname»\materials\ads\watibulle.vmt
+«modname»\materials\ads\watibulle.vtf</em>)</p>
+<p><img alt="" src="../img/image34.png" /></p>
+<pre><code>&quot;LightmappedGeneric&quot;
+{
+    &quot;$basetexture&quot; &quot;ads/watibulle&quot;
+}
+</code></pre>
+<h2 id="texture-blend">Texture Blend</h2>
+<p><a href="https://developer.valvesoftware.com/wiki/$blendmodulatetexture">https://developer.valvesoftware.com/wiki/$blendmodulatetexture</a></p>
+<p>La texture blend est un mélange de deux textures, elles sont très pratiques pour ajouter  des aspérités.</p>
+<p><img alt="" src="../img/image35.png" /></p>
+<p>Pour créer, nous avons besoin des deux textures est une texture <em>modulate</em> rouge et vert qui va indiquer comment doive se mélanger les deux textures.</p>
+<p><img alt="" src="../img/image36.png" /></p>
+<pre><code>&quot;WorldVertexTransition&quot;
+{
+    &quot;$basetexture&quot; &quot;urban/blend_stone_tiles_diffuse&quot;
+    &quot;$bumpmap&quot; &quot;urban/blend_stone_tiles_normal&quot;
+    &quot;$basetexture2&quot; &quot;urban/blend_stone_tiles_mud_forest_diffuse&quot;
+    &quot;$bumpmap2&quot; &quot;urban/blend_stone_tiles_mud_forest_normal&quot;
+    &quot;$surfaceprop&quot; &quot;Brick&quot;
+    &quot;$surfaceprop2&quot; &quot;Dirt&quot;
+    &quot;$basetexturetransform&quot; &quot;center .5 .5 scale 2 2 rotate 0  translate 0 0&quot;
+    &quot;$basetexturetransform2&quot; &quot;center .5 .5 scale 4 4 rotate 0 translate 0 0&quot;
+    &quot;$alphatest&quot; 1
+}
+</code></pre>
+<p>Pour utiliser la texture blend  cf.<a href="#56-utiliser-les-textures-blends">5.6 Utiliser les textures Blends</a></p>
+<h2 id="texture-devs">Texture Devs</h2>
+<p>Les Textures dev sont des textures créer par Valve pour aider aux mesures.</p>
+<p><em>dev_measurewall</em></p>
+<p><img alt="" src="../img/image37.png" /></p>
+<p>Celle-ci permettent de connaitre mesures avec la taille d'un mur soit 128 sur 128 soit 2.5m.</p>
+<p>"<em>dev_measurewall01c</em>" mets en avant la taille du joueur.</p>
+<div style="page-break-after: always"></div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Entity Tool - Source Mod Wiki</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Source Mod Wiki</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../credit.md" class="nav-link">Credit</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#entity-tool" class="nav-link">Entity Tool</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#prop" class="nav-link">Prop</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#ajouter-une-entite-dans-le-repertoire-de-hammer" class="nav-link">Ajouter une entité dans le répertoire de hammer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="entity-tool">Entity Tool</h1>
+<p>Dans les entity tools, il existe plusieurs <em>Class</em>, nous allons décrire une parties d'entres elles</p>
+<p><em>info_player_start</em></p>
+<ul>
+<li>Définie où le joueur va apparaître</li>
+</ul>
+<p><em>Light</em></p>
+<ul>
+<li>Permettent de définir les lumières</li>
+</ul>
+<p><img alt="" src="../img/image64.png" /></p>
+<h2 id="prop">Prop</h2>
+<p>Quand un prop est appliqué, on a un carré rouge qui s'affiche est une nouvelle fenêtre, sur cette nouvelle fenêtre, on a «World Model» qui permet de faire prendre une apparence au prop à partir de la bibliothèque des modèles 3D du jeu.</p>
+<p>Nous avons plusieurs Props</p>
+<p>Prop_Rotating_Door</p>
+<ul>
+<li>Ce prop permet de créer une porte, qui s'ouvre quand le joueur interagi avec.</li>
+</ul>
+<p>Prop_physics</p>
+<ul>
+<li>Crée des modèles avec des propriétés physiques ce modèle peut aussi être brisé.</li>
+</ul>
+<p>Prop_detail</p>
+<ul>
+<li>N'a pas de collision ni de propriété physique À utiliser pour les décors d'arrière-plan.</li>
+</ul>
+<p>Prop_static</p>
+<ul>
+<li>
+<p>c'est un prop qui ne bouge pas, ils n'ont pas propiété physique sauf la collision.</p>
+</li>
+<li>
+<p>ne peut pas avoir d'animation.</p>
+</li>
+</ul>
+<h2 id="ajouter-une-entite-dans-le-repertoire-de-hammer">Ajouter une entité dans le répertoire de hammer</h2>
+<p>Pour ajouter une entité, nous allons créer un fichier <em>.fdg</em> avec sa nous pouvons ajouter notre entité écrit en C++ cf. <a href="#84-ajouter-une-entité">8.4 Ajouter une entité</a></p>
+<p>Ici pour ajouter une arme.</p>
+<pre><code class="language-cpp">@PointClass base(Targetname, Angles, Origin) studio(&quot;path/model.mdl&quot;) = example_entity_name : &quot;example entity description, visible in Hammers 'help' Box. 
+[
+
+    Property_name_1(string)     : &quot;Example String Name&quot;     : &quot;Example&quot; : &quot;Keyvalue Description&quot;
+    Property_name_2(integer)    : &quot;Example Interger Name&quot;   : 15        : &quot;Keyvalue Description&quot;
+    Property_name_3(float)      : &quot;Example Float Name&quot;      : &quot;1.5&quot;     : &quot;Keyvalue Description&quot;
+    Property_name_4(boolean)    : &quot;Example Boolean Name&quot;    : 1         : &quot;Keyvalue Description&quot;
+
+    Property_name_5(choices) : &quot;second number&quot; : 0 : &quot;Your choice of numbers!&quot; =
+    [
+        0 : &quot;Default&quot;
+        1 : &quot;Something&quot;
+        2 : &quot;Another Thing&quot;
+    ]
+
+    spawnflags(flags) =
+    [
+        1 : &quot;A flag&quot;       : 0 // 0 means the flag isn't ticked by default
+        2 : &quot;Another flag&quot; : 1 // 1 means the flag is ticked by default
+    ]
+
+    // Inputs
+    input DoSomething(void) : &quot;Do something&quot;    
+    // Outputs
+    output OnSomethingHappened(void) : &quot;Fires when something happens&quot;
+    output OnSomethingElse(void) : &quot;Fires when something else happens&quot;
+
+]
+</code></pre>
+<p>Ici pour ajouter un prop.</p>
+<p>Ajouter le fichier <em>.fdg</em> dans les Data files de Hammer.</p>
+<p><img alt="" src="../img/image65.png" /></p>
+<div style="page-break-after: always"></div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Modèle 3D - Source Mod Wiki</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Source Mod Wiki</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../credit.md" class="nav-link">Credit</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#modele-3d" class="nav-link">Modèle 3D</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#cree-un-modele-3d" class="nav-link">Crée un modèle 3D</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#exporter-le-modele-3d-sur-source" class="nav-link">Exporter le modèle 3D sur Source</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#faire-un-fichier-qc" class="nav-link">Faire un fichier .QC</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#verifier-modele-3d" class="nav-link">Vérifier modèle 3D</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#exporter-animation" class="nav-link">Exporter animation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="modele-3d">Modèle 3D</h1>
+<p><a href="https://www.blender.org/">https://www.blender.org/</a></p>
+<p><a href="http://steamreview.org/BlenderSourceTools/">http://steamreview.org/BlenderSourceTools/</a></p>
+<p>Ce chapitre a pour but de mettre vos modèles 3d crée dans votre mod source, importation se passe en 2 étapes la premier, vous devez export depuis vers un format<em>.smd</em> ou <em>.dmx</em> avant d'exporter vers un fichier <em>.mdl</em> utilisable dans Source.</p>
+<p><img alt="" src="../img/image39.png" /></p>
+<h2 id="cree-un-modele-3d">Crée un modèle 3D</h2>
+<p>Nous allons créer un modèle 3D sur Blender logiciel gratuit et libre, pour télécharger Blender <a href="https://www.blender.org/">cliquer ici</a>.</p>
+<p>Nous allons ajouter un addon pour cela <a href="http://steamreview.org/BlenderSourceTools/">cliquer ici</a>.</p>
+<p>Lancez Blender, Allez sur <em>Edit\Preferences</em>.</p>
+<p>Sur le préférences allez sur add-ons puis cliquez sur install en haut à droite sélectionner le fichier «blender_source_tools_3.2.5.zip».</p>
+<p>Activer «Import-Export: Blender Source Tools» il faut que la case soit coché.</p>
+<p><img alt="" src="../img/image40.png" /></p>
+<h2 id="exporter-le-modele-3d-sur-source">Exporter le modèle 3D sur Source</h2>
+<p>Aller dans la fenêtre <em>propretie</em> <img alt="" src="../img/image41.png" /> (shift + 7 ou à droite si vous êtes sur le layout par défault)</p>
+<p><img alt="" src="../img/image42.png" /> <em>scene -&gt; source engine</em></p>
+<p><img alt="" src="../img/image43.jpg" /></p>
+<p>Allez sur <em>Scene</em> dans les <em>Properties</em> puis sur <em>Source Engine Export</em>.</p>
+<p><strong>Export Path:</strong></p>
+<ul>
+<li>Indiquer le dossier où sera exporter le modèle 3D en .<em>smd</em> (modelsrc)</li>
+</ul>
+<p><strong>Engine Path:</strong></p>
+<ul>
+<li>Dossier Bin du moteur ( exemple: <em>/steam/steamapps/common/Counter-Strike Global Offensive/bin</em>)</li>
+</ul>
+<p><strong>Material Path:</strong></p>
+<ul>
+<li>Texture du modèle 3D (exemple: (<em>hl2/materials/)models/prop/computer</em>)
+(<strong>Seulement si vous choisissez .DMX</strong>)</li>
+</ul>
+<p>Une fois fait cliquer sur «<em>Export</em>»</p>
+<p>sur <strong>Source Engine QC Complies</strong></p>
+<p><strong>Game Path:</strong> 
+- Indiquer le dossier de données de votre mod (hl2).</p>
+<p><strong>QC Path:</strong> 
+- Fichier <em>.qc</em> avec tout les infos de compilation par <em>.qc</em> dans le même dossier que <em>.smd</em> (modelsrc)</p>
+<p>(pour plus d'info sur le fichier QC cf. <a href="#33-faire-un-fichier-qc">3.3 faire un fichier QC</a>)</p>
+<p>une fois appuyer sur <em>Compile All Now</em> cela va activer la compilation.</p>
+<p>La compilation se passe en 2 étape vous aller compiler le modèle 3D en <em>.smd</em> puis en <em>.mdl</em>.</p>
+<p>N'oublier pas d'exporter les textures du modèle 3D dans le dossier suivante.</p>
+<p>«dossier de données» <em>/materials/models/</em></p>
+<p>Attention! La collection le modèle et le matérials doivent avoir le même nom.</p>
+<p>Vérifier dans outliner
+<img alt="" src="../img/image44.png" /> (shift + F9 ou à droite du layout par défault)</p>
+<p><img alt="" src="../img/image45.png" /></p>
+<p><img alt="" src="../img/image46.png" /></p>
+<h2 id="faire-un-fichier-qc">Faire un fichier .QC</h2>
+<p><a href="https://developer.valvesoftware.com/wiki/QC">https://developer.valvesoftware.com/wiki/QC</a></p>
+<h3 id="conversion-dun-simple-model-3d">Conversion d'un simple model 3D</h3>
+<p>Fichier <em>.qc</em> est juste un fichier texte, on  l'on va mettre dedans les informations lier au type de modèle.</p>
+<p>Remplacer «<em>myfirstmodel</em>» par le nom de votre modèle.</p>
+<pre><code class="language-cpp">$modelname &quot;props_sdk\myfirstmodel.mdl&quot; //le nom du modèle 3D son corps
+
+$body mybody &quot;myfirstmodel-ref.smd&quot; //les vertex fait sous blender
+
+$surfaceprop combine_metal //Le type de surface
+
+$cdmaterials &quot;models\props_sdk&quot; //Repertoire de la texture
+
+$collisionmodel &quot;myfirstmodel-phys.smd&quot; //Les collision
+
+$sequence idle &quot;myfirstmodel-ref.smd&quot; // Séquence sans animation
+</code></pre>
+<p><img alt="" src="../img/image47.png" /></p>
+<h3 id="ajouter-des-informations-pour-les-props">Ajouter des informations pour les props</h3>
+<p>Exemple pour un prop en verre</p>
+<pre><code class="language-cpp">$keyvalues
+{
+    prop_data 
+    {
+        &quot;base&quot;              &quot;Glass.Base&quot;    // Matériau de base défini comme &quot;Glass.Base&quot;
+        &quot;dmg.explosive&quot;     &quot;1.0&quot;           // Remplace le comportement explosif de base du verre
+        &quot;dmg.bullets&quot;       &quot;1.0&quot;           // Dommages causés par les balles
+        &quot;health&quot;            &quot;1&quot;             // Santé du matériau
+        &quot;damage_table&quot;      &quot;glass&quot;         // Tableau de dommages nommé &quot;glass&quot;
+    }
+    BreakableModels
+    {
+        GlassChunks
+        {
+            models\gibs\glass_shard01.mdl    // Modèle de fragment de verre 01
+            models\gibs\glass_shard02.mdl    // Modèle de fragment de verre 02
+            models\gibs\glass_shard03.mdl    // Modèle de fragment de verre 03
+            models\gibs\glass_shard04.mdl    // Modèle de fragment de verre 04
+            models\gibs\glass_shard05.mdl    // Modèle de fragment de verre 05
+            models\gibs\glass_shard06.mdl    // Modèle de fragment de verre 06
+        }
+    }
+}
+
+</code></pre>
+<h2 id="verifier-modele-3d">Vérifier modèle 3D</h2>
+<p>Aller dans dossier <em>bin</em> et ouvrez le logiciel <img alt="" src="../img/image48.png" /><em>hlmv</em> ou cliquer sur <strong><em>Launch HLMV</em></strong> sur Ouvrez votre modèle 3D et vérifier bien qui s'affiche comme il faut.</p>
+<h2 id="exporter-animation">Exporter animation</h2>
+<p>Dans cette exemple, j'utilise le model trouvable dans</p>
+<p><em>common\sourcesdk_content\hl2\modelsrc\humans_sdk\male_sdk\male_06_reference.smd</em>.</p>
+<p>Faite <em>file-&gt;import-&gt;Source Engine</em></p>
+<p><img alt="" src="../img/image49.png" /></p>
+<p>Donner un nom à votre animation et exporter la en <em>.smd</em>.</p>
+<p><img alt="" src="../img/image50.png" /> <img alt="" src="../img/image51.png" /></p>
+<p>Ajouter l'animation dans la liste des sequences du fichier <em>.qc</em> (voir Faire un fichier QC).</p>
+<pre><code class="language-cpp">$sequence &quot;idle&quot; &quot;male_06_reference.smd&quot;
+
+$sequence &quot;attack&quot; &quot;animation1.smd&quot; fps 24
+</code></pre>
+<p>Vous pouvez visualiser l'animation dans l'onglet <em>Sequence</em> de <em>hlmv</em>.</p>
+<p><img alt="" src="../img/image52.png" /></p>
+<div style="page-break-after: always"></div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
