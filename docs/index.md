@@ -1,4 +1,8 @@
 
+ChocoScaff
+
+![](img/image1.png)
+
 # Table des matières
 
 - [Répertoire et creation d un projet](repertoire_et_creation_dun_projet.md)
