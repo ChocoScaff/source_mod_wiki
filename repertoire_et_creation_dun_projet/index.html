@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Les Répertoires et création d'un projet - Source Mod Wiki</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Source Mod Wiki</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../credit.md" class="nav-link">Credit</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#les-repertoires-et-creation-dun-projet" class="nav-link">Les Répertoires et création d'un projet</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#repertoire-racine" class="nav-link">Répertoire Racine</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#creation-de-projet-et-repertoires-des-donnees" class="nav-link">Création de projet et répertoires des données</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#gameinfo" class="nav-link">GameInfo</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#lancer-le-mod" class="nav-link">Lancer le mod</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="les-repertoires-et-creation-dun-projet">Les Répertoires et création d'un projet</h1>
+<p><a href="https://developer.valvesoftware.com/wiki/Source_SDK_Files_and_Directory_Structure">https://developer.valvesoftware.com/wiki/Source_SDK_Files_and_Directory_Structure</a></p>
+<p>Ce chapitre à pour but de vous expliquer comment marche le système de fichier d'un jeu qui marche avec le Source. Pour placer correctement vos différentes ressources, il faut crée un fichier GameInfo.txt pour indiquer de quel type de jeu qu'il s'agit.</p>
+<h2 id="repertoire-racine">Répertoire Racine</h2>
+<p>Les jeux source on ce système de répertoire</p>
+<p>Le Dossier <em>Bin</em>, possède les outils et les bibliothèques du moteur, aller ici pour trouver Hammer.</p>
+<p>Le dossier avec les données (hl2 pour Half-Life 2, left4dead2 pour Left4 Dead 2, etc.)</p>
+<p>Vous pouvez trouver les fichiers de votre jeu sur les paramètres devotre jeu Steam, cliquer sur l'engrenage
+puis sur fichiers locaux.</p>
+<p>-Des dossiers de données supplémentaire lier au langues ou DLC (ce n'est pas très important pour le moment)</p>
+<p><img alt="" src="../img/image22.png" /></p>
+<h2 id="creation-de-projet-et-repertoires-des-donnees">Création de projet et répertoires des données</h2>
+<p>(Si ces dossiers n'apparaissent pas, c'est normal, ils sont pour la plupart compressé en <em>.vpk</em>)</p>
+<p>Dans les fichiers du jeu dont nous voulons en faire un mod crée un dossier avec le nom du mod dans notre exemple, nous allons l'appeler "<em>custom</em>"</p>
+<p><img alt="" src="../img/image23.png" /></p>
+<p>Dans ce dossier, nous allons créer plusieurs dossiers voici leurs utilités</p>
+<p><strong>bin</strong>: server.dll et client.dll contient le code compilé du mod</p>
+<p><strong>cfg</strong>: Contient des lignes de commande pour la console format <em>.cfg</em></p>
+<p><strong>expressions</strong>: expresion des npcs pour les scenes de dialogue <em>.txt</em></p>
+<p><strong>maps</strong>: pour mettre les cartes en format .bps</p>
+<p><strong>mapsrc</strong>: cartes au format <em>.vmt</em> pour qu'on puisse les ouvrirs avec hammer.</p>
+<p><strong>materials</strong>: pour mettre les textures des modèles importés <em>.vmt</em> et <em>.vtf</em></p>
+<p><strong>materialsrc</strong>: Texture non comprésé et non exporté dans le format valve</p>
+<p><strong>media</strong>: vidéo au format <em>.bik</em></p>
+<p><strong>models</strong>: pour mettre les modèles importés .mdl</p>
+<p><strong>modelsrc</strong>: fichier <em>.smd</em> et <em>.qc</em> du model (vous pouvez mettre en plus le fichier blender)</p>
+<p><strong>mapsrc/prefabs:</strong> pour y mettre les préfabriquer des maps</p>
+<p><strong>particles</strong>: mettre vos particules crée <em>.pcf</em></p>
+<p><strong>ressources</strong>: ressource divers du jeu (police, icone, menu, etc...)</p>
+<p><strong>save</strong>: sauvegarde du jeu <em>.sav</em></p>
+<p><strong>scenes</strong>: scene de dialogue des npcs format <em>.vcd</em></p>
+<p><strong>scripts</strong>: pour mettre les scripts <em>.txt</em></p>
+<p><strong>src</strong>: mettre ici le code c++ fichier <em>.cpp</em> et <em>.h</em></p>
+<p>Les dossiers rc (modelsrc, src, etc...) sont uniquement destinée aux développeurs.</p>
+<p><img alt="" src="../img/image24.png" /></p>
+<h2 id="gameinfo">GameInfo</h2>
+<p>Dans le dossier de votre mod, vous devez avoir un <em>gameinfo.txt</em> qui contient les informations primaires de votre mod (Titre, SearchPath, etc...).</p>
+<p>Le fichier gameinfo.txt décrit votre mod. Il contient des métadonnées comme le nom du mod, un lien vers votre site web et un manuel, et définit comment on peut y accéder. Ce fichier est stocké dans le dossier principal de votre mod, et il fait office de marqueur pour Steam, Source et le Source SDK pour détecter son existence.</p>
+<p>cf. <a href="../ressource/gameinfo.txt">Exemple GameInfo.txt</a></p>
+<h2 id="lancer-le-mod">Lancer le mod</h2>
+<p>Fait la commande <em>-game «yourModName»</em> (dans notre cas custom)</p>
+<p><img alt="" src="../img/image25.png" /></p>
+<div style="page-break-after: always"></div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
