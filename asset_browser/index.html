@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Les entités - Source Mod Wiki</title>
+    <title>Asset Browser - Source Mod Wiki</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Les entit\u00e9s";
-        var mkdocs_page_input_path = "entity.md";
+        var mkdocs_page_name = "Asset Browser";
+        var mkdocs_page_input_path = "asset_browser.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -63,14 +63,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../optimisation/">Optimisation</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Les entités</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#prop">Prop</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ajouter-une-entite-dans-le-repertoire-de-hammer">Ajouter une entité dans le répertoire de hammer</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../entity/">Les entités</a>
                 </li>
               </ul>
               <ul>
@@ -113,8 +107,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../level_design/">Level design</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../asset_browser/">Asset Browser</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Asset Browser</a>
+    <ul class="current">
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -143,9 +139,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Les entités</li>
+      <li class="breadcrumb-item active">Asset Browser</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/ChocoScaff/source_mod_wiki/edit/master/docs/entity.md">Edit on ChocoScaff/source_mod_wiki</a>
+          <a href="https://github.com/ChocoScaff/source_mod_wiki/edit/master/docs/asset_browser.md">Edit on ChocoScaff/source_mod_wiki</a>
     </li>
   </ul>
   <hr/>
@@ -153,83 +149,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="entity-tool">Entity Tool</h1>
-<p>Dans les entity tools, il existe plusieurs <em>Class</em>, nous allons décrire une parties d'entres elles</p>
-<p><em>info_player_start</em></p>
-<ul>
-<li>Définie où le joueur va apparaître</li>
-</ul>
-<p><em>Light</em></p>
-<ul>
-<li>Permettent de définir les lumières</li>
-</ul>
-<p><img alt="" src="../img/image64.png" /></p>
-<h2 id="prop">Prop</h2>
-<p>Quand un prop est appliqué, on a un carré rouge qui s'affiche est une nouvelle fenêtre, sur cette nouvelle fenêtre, on a «World Model» qui permet de faire prendre une apparence au prop à partir de la bibliothèque des modèles 3D du jeu.</p>
-<p>Nous avons plusieurs Props</p>
-<p>Prop_Rotating_Door</p>
-<ul>
-<li>Ce prop permet de créer une porte, qui s'ouvre quand le joueur interagi avec.</li>
-</ul>
-<p>Prop_physics</p>
-<ul>
-<li>Crée des modèles avec des propriétés physiques ce modèle peut aussi être brisé.</li>
-</ul>
-<p>Prop_detail</p>
-<ul>
-<li>N'a pas de collision ni de propriété physique À utiliser pour les décors d'arrière-plan.</li>
-</ul>
-<p>Prop_static</p>
-<ul>
-<li>
-<p>c'est un prop qui ne bouge pas, ils n'ont pas propiété physique sauf la collision.</p>
-</li>
-<li>
-<p>ne peut pas avoir d'animation.</p>
-</li>
-</ul>
-<h2 id="ajouter-une-entite-dans-le-repertoire-de-hammer">Ajouter une entité dans le répertoire de hammer</h2>
-<p>Pour ajouter une entité, nous allons créer un fichier <em>.fdg</em> avec sa nous pouvons ajouter notre entité écrit en C++ cf. <a href="../programmation/#ajouter-une-entite">Ajouter une entité</a></p>
-<p>Ici pour ajouter une arme.</p>
-<pre><code class="language-cpp">@PointClass base(Targetname, Angles, Origin) studio(&quot;path/model.mdl&quot;) = example_entity_name : &quot;example entity description, visible in Hammers 'help' Box. 
-[
-
-    Property_name_1(string)     : &quot;Example String Name&quot;     : &quot;Example&quot; : &quot;Keyvalue Description&quot;
-    Property_name_2(integer)    : &quot;Example Interger Name&quot;   : 15        : &quot;Keyvalue Description&quot;
-    Property_name_3(float)      : &quot;Example Float Name&quot;      : &quot;1.5&quot;     : &quot;Keyvalue Description&quot;
-    Property_name_4(boolean)    : &quot;Example Boolean Name&quot;    : 1         : &quot;Keyvalue Description&quot;
-
-    Property_name_5(choices) : &quot;second number&quot; : 0 : &quot;Your choice of numbers!&quot; =
-    [
-        0 : &quot;Default&quot;
-        1 : &quot;Something&quot;
-        2 : &quot;Another Thing&quot;
-    ]
-
-    spawnflags(flags) =
-    [
-        1 : &quot;A flag&quot;       : 0 // 0 means the flag isn't ticked by default
-        2 : &quot;Another flag&quot; : 1 // 1 means the flag is ticked by default
-    ]
-
-    // Inputs
-    input DoSomething(void) : &quot;Do something&quot;    
-    // Outputs
-    output OnSomethingHappened(void) : &quot;Fires when something happens&quot;
-    output OnSomethingElse(void) : &quot;Fires when something else happens&quot;
-
-]
-</code></pre>
-<p>Ici pour ajouter un prop.</p>
-<p>Ajouter le fichier <em>.fdg</em> dans les Data files de Hammer.</p>
-<p><img alt="" src="../img/image65.png" /></p>
-<div style="page-break-after: always"></div>
+                <h1 id="asset-browser">Asset Browser</h1>
+<p><a href="https://github.com/ChocoScaff/SourceSDK-/releases">https://github.com/ChocoScaff/SourceSDK-/releases</a></p>
+<p>Asset Browser est un outil crée par ChocoScaff, qui permet d'avoir une interface avec les logiciels et permet d'avoir un accès au fichier du projet.</p>
+<p><img alt="" src="../img/image27.png" /></p>
+<p>Avec l'outil fichier, vous pouvez observer les fichiers du projet, compiler les texture ou model.</p>
+<p><img alt="" src="../img/image123.png" /></p>
+<p>On peut ouvrir les fichiers .vpk et voire les fichiers à l'intérieur et les extraires.</p>
+<p><img alt="" src="../img/image122.png" /></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../optimisation/" class="btn btn-neutral float-left" title="Optimisation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../programmation/" class="btn btn-neutral float-right" title="Programmation">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../level_design/" class="btn btn-neutral float-left" title="Level design"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../lexique/" class="btn btn-neutral float-right" title="Lexique">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -256,10 +189,10 @@
         </span>
     
     
-      <span><a href="../optimisation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../level_design/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../programmation/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../lexique/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
