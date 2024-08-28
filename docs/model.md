@@ -131,7 +131,7 @@ $keyvalues
 
 ## Vérifier modèle 3D
 
-Aller dans dossier *bin* et ouvrez le logiciel ![](img/image48.png)*hlmv* ou cliquer sur ***Launch HLMV*** sur Ouvrez votre modèle 3D et vérifier bien qui s'affiche comme il faut.
+Aller dans dossier *bin* et ouvrez le logiciel *hlmv* ou cliquer sur ***Launch HLMV*** sur Ouvrez votre modèle 3D et vérifier bien qui s'affiche comme il faut.
 
 ## Exporter animation 
 

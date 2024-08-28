@@ -49,9 +49,9 @@ Source SDK Game Development Essentials
 
 Half-Life 2 Mods for dummies
 
-https://www.valvesoftware.com/en/publications
+<https://www.valvesoftware.com/en/publications>
 
-https://www.researchgate.net/publication/254583261_Using_the_source_engine_for_serious_games
+<https://www.researchgate.net/publication/254583261_Using_the_source_engine_for_serious_games>
 
 <http://will2k.byethost15.com/tutorials.htm?i=1>
 

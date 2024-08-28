@@ -2,7 +2,7 @@
 
 <https://www.youtube.com/watch?v=FRwAmlOT4zc>
 
-Le moteur source utilise pour faire leurs optimisation un arbre BSP (*binary space partitioning)*
+Le moteur source utilise pour faire son optimisation un arbre BSP (*binary space partitioning)*
 
 celui-ci permet d'organiser les pièces d'une cartes dans un ordre hiérarchique le principe étant que ceux que le joueur ne voit pas, ne soit pas charger et donc économiser en ressource
 
