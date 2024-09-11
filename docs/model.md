@@ -61,6 +61,8 @@ La compilation se passe en 2 étape vous aller compiler le modèle 3D en *.smd* 
 
 Une fois compilé utiliser, le logiciel hlmv.exe pour obsever le model 3d.
 
+![](img/images124.jpg)
+
 N'oublier pas d'exporter les textures du modèle 3D dans le dossier suivante.
 
 «dossier de données» */materials/models/*
