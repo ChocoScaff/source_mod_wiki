@@ -6,8 +6,6 @@
 
 Ce chapitre a pour but de mettre vos modèles 3d crée dans votre mod source, importation se passe en 2 étapes la premier, vous devez export depuis vers un format*.smd* ou *.dmx* avant d'exporter vers un fichier *.mdl* utilisable dans Source.
 
-![](img/image39.png)
-
 ## Crée un modèle 3D
 
 Nous allons créer un modèle 3D sur Blender logiciel gratuit et libre, pour télécharger Blender [cliquer ici](https://www.blender.org/).
@@ -58,6 +56,10 @@ sur **Source Engine QC Complies**
 une fois appuyer sur *Compile All Now* cela va activer la compilation.
 
 La compilation se passe en 2 étape vous aller compiler le modèle 3D en *.smd* puis en *.mdl*.
+
+![](img/image39.png)
+
+Une fois compilé utiliser, le logiciel hlmv.exe pour obsever le model 3d.
 
 N'oublier pas d'exporter les textures du modèle 3D dans le dossier suivante.
 
