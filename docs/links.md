@@ -43,7 +43,7 @@
 
 <https://valvedev.info/guides/source-multi-tool-a-field-guide/>
 
-## Livres or articles
+## Livres ou articles
 
 Source SDK Game Development Essentials
 
