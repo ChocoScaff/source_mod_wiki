@@ -1,14 +1,14 @@
 # Entity Tool
 
-Dans les entity tools, il existe plusieurs *Class*, nous allons décrire une parties d'entres elles
+Dans les entity tools, il existe plusieurs *Class*, nous allons décrire une parties d'entres elles.
 
 *info_player_start*
 
-- Définie où le joueur va apparaître
+- Définie où le joueur va apparaître.
 
 *Light*
 
-- Permettent de définir les lumières
+- Permettent de définir les lumières.
 
 ![](img/image64.png)
 
@@ -16,7 +16,7 @@ Dans les entity tools, il existe plusieurs *Class*, nous allons décrire une par
 
 Quand un prop est appliqué, on a un carré rouge qui s'affiche est une nouvelle fenêtre, sur cette nouvelle fenêtre, on a «World Model» qui permet de faire prendre une apparence au prop à partir de la bibliothèque des modèles 3D du jeu.
 
-Nous avons plusieurs Props
+Nous avons plusieurs Props :
 
 Prop_Rotating_Door
 
