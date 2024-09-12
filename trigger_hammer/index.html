@@ -157,7 +157,7 @@
 <p><a href="https://developer.valvesoftware.com/wiki/Category:IO_System">https://developer.valvesoftware.com/wiki/Category:IO_System</a></p>
 <p>Dans Hammer nous pouvons activer des scripts (Dialogue, apparition d'ennemi, etc...), cela peut se faire en marchant à un endroit précis où au chargement de la map.</p>
 <h2 id="activer-un-script">Activer un script</h2>
-<p>Avec l'entité <em>logic_auto</em> nous pouvons activer un script au démarage de la map.</p>
+<p>Avec l'entité <em>logic_auto</em>, nous pouvons activer un script au démarage de la map.</p>
 <p><img alt="" src="../img/image15.png" /> </p>
 <p><img alt="" src="../img/image16.png" /></p>
 <ul>
@@ -173,10 +173,17 @@
 <h2 id="machine-a-etat">Machine à état</h2>
 <p>Une machine à état est un principe séquentielle, où l'on va donner un état qui va changer en fonction de la valeur qui recois en entré.</p>
 <p><img alt="" src="../img/image18.png" /></p>
-<p>Metter l'entité <em>logic_case</em>.</p>
+<p>Metter l'entité <em>logic_case</em> dans hammer pour créer des etats.</p>
 <p><img alt="" src="../img/image26.png" /></p>
 <p>Exemple avec un système de lumière qui alume une lumière rouge puis vert et bleue.</p>
 <p><img alt="" src="../img/image19.png" /> <img alt="" src="../img/image20.png" /></p>
+<p>Dans l'exemple au dessus nous avons 6 états possible, ces états définise l'état de 3 lumières, 1 rouge, 1 verte, 1 bleue.
+- case 1 (R_ON)  : Met l'entité "light_night_R" sur on, puis après un delay vas entrer dans l'etat 2.
+- case 2 (R_OFF) : Met l'entité "light_night_R" sur off, puis après un delay vas entrer dans l'etat 3.
+- case 3 (G_ON)  : Met l'entité "light_night_G" sur on, puis après un delay vas entrer dans l'etat 4.
+- case 4 (G_OFF) : Met l'entité "light_night_G" sur on, puis après un delay vas entrer dans l'etat 5.
+- case 5 (B_ON)  : Met l'entité "light_night_B" sur on, puis après un delay vas entrer dans l'etat 6.
+- case 6 (B_OFF) : Met l'entité "light_night_B" sur on, puis après un delay vas entrer dans l'etat 1.</p>
 <div style="page-break-after: always"></div>
               
             </div>
