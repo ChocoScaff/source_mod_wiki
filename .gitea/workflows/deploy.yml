@@ -27,5 +27,5 @@ jobs:
       run: mkdocs build
 
     - name: Deploy MkDocs to Gitea Pages
-        run: |
-          mkdocs gh-deploy --remote-name origin --branch gh-pages
+      run: |
+        mkdocs gh-deploy --remote-name origin --branch gh-pages
