@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Script pour convertir une série de fichiers Markdown en PDF et EPUB.
-Optimisé pour utiliser moins de mémoire en divisant le travail en lots.
+Utilise Pandoc pour la conversion et gère correctement les chemins d'images.
 """
 
 import os
@@ -12,8 +12,6 @@ import re
 import datetime
 import shutil
 import tempfile
-import time
-from math import ceil
 
 
 def natural_sort_key(s):
@@ -25,35 +23,50 @@ def natural_sort_key(s):
 def find_image_references(markdown_files):
     """
     Trouve toutes les références d'images dans les fichiers markdown.
+    
+    Args:
+        markdown_files: Liste des chemins vers les fichiers markdown
+        
+    Returns:
+        Un ensemble de chemins d'images référencées
     """
     image_paths = set()
+    # Regex pour trouver les références d'images en Markdown
     image_pattern = re.compile(r'!\[.*?\]\((.*?)(?:\s+["\'](.*?)["\']\s*)?\)')
     
     for file_path in markdown_files:
-        try:
-            with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
-                content = f.read()
-                for match in image_pattern.finditer(content):
-                    image_path = match.group(1)
-                    if image_path:
-                        image_paths.add(image_path)
-        except Exception as e:
-            print(f"Erreur lors de la lecture du fichier {file_path}: {e}")
+        with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+            content = f.read()
+            for match in image_pattern.finditer(content):
+                image_path = match.group(1)
+                if image_path:
+                    image_paths.add(image_path)
     
     return image_paths
 
 
 def copy_images_to_temp_dir(image_references, base_dir, temp_dir):
     """
-    Copie les images référencées vers un répertoire temporaire.
+    Copie les images référencées vers un répertoire temporaire et retourne un dictionnaire
+    de correspondance entre ancien et nouveau chemin.
+    
+    Args:
+        image_references: Ensemble des chemins d'images référencées
+        base_dir: Répertoire de base pour résoudre les chemins relatifs
+        temp_dir: Répertoire temporaire où copier les images
+        
+    Returns:
+        Un dictionnaire {ancien_chemin: nouveau_chemin}
     """
     path_mapping = {}
     img_dir = os.path.join(temp_dir, "img")
     os.makedirs(img_dir, exist_ok=True)
     
     for img_path in image_references:
+        # Essayer de résoudre le chemin absolu de l'image
         absolute_img_path = img_path
         if not os.path.isabs(img_path):
+            # Essayer différentes possibilités pour trouver l'image
             possible_paths = [
                 os.path.join(base_dir, img_path),
                 os.path.join(base_dir, 'img', os.path.basename(img_path)),
@@ -66,8 +79,13 @@ def copy_images_to_temp_dir(image_references, base_dir, temp_dir):
                     break
         
         if os.path.exists(absolute_img_path):
+            # Déterminer le nouveau chemin dans le répertoire temporaire
             new_img_path = os.path.join(img_dir, os.path.basename(img_path))
+            
+            # Copier l'image
             shutil.copy2(absolute_img_path, new_img_path)
+            
+            # Ajouter au dictionnaire de correspondance
             path_mapping[img_path] = os.path.join("img", os.path.basename(img_path))
             print(f"Image copiée: {img_path} -> {os.path.join('img', os.path.basename(img_path))}")
         else:
@@ -79,14 +97,22 @@ def copy_images_to_temp_dir(image_references, base_dir, temp_dir):
 def update_image_references(content, path_mapping):
     """
     Met à jour les références d'images dans le contenu markdown.
+    
+    Args:
+        content: Contenu markdown
+        path_mapping: Dictionnaire {ancien_chemin: nouveau_chemin}
+        
+    Returns:
+        Contenu markdown mis à jour
     """
+    # Regex pour trouver les références d'images en Markdown
     image_pattern = re.compile(r'(!\[.*?\]\()(.+?)(\s+["\'](.*?)["\']\s*)?(\))')
     
     def replace_match(match):
-        prefix = match.group(1)
-        img_path = match.group(2)
-        middle = match.group(3) or ""
-        suffix = match.group(5)
+        prefix = match.group(1)  # ![alt](
+        img_path = match.group(2)  # path/to/image.png
+        middle = match.group(3) or ""  # Optional title part
+        suffix = match.group(5)  # )
         
         if img_path in path_mapping:
             return f"{prefix}{path_mapping[img_path]}{middle}{suffix}"
@@ -95,69 +121,17 @@ def update_image_references(content, path_mapping):
     return image_pattern.sub(replace_match, content)
 
 
-def create_batch_pdf(batch_files, temp_dir, output_pdf, metadata_path):
+def create_book(input_dir, output_name, title, author, create_pdf=True, create_epub=True):
     """
-    Crée un PDF à partir d'un lot de fichiers markdown.
-    """
-    print(f"Création d'un PDF avec {len(batch_files)} fichiers...")
+    Convertit des fichiers markdown en PDF et/ou EPUB en gérant correctement les images.
     
-    cmd = [
-        "pandoc",
-        "-f", "markdown",
-        "-o", output_pdf,
-        "--resource-path", temp_dir,
-        metadata_path,
-    ] + batch_files
-    
-    try:
-        subprocess.run(cmd, check=True, cwd=temp_dir, timeout=300)  # 5 minutes timeout
-        return True
-    except subprocess.SubprocessError as e:
-        print(f"Erreur lors de la création du PDF: {e}")
-        return False
-
-
-def merge_pdfs(pdf_files, output_pdf):
-    """
-    Fusionne plusieurs fichiers PDF en un seul.
-    Utilise PyPDF2 si disponible, sinon essaie avec pdftk, puis avec gs.
-    """
-    try:
-        from PyPDF2 import PdfMerger
-        merger = PdfMerger()
-        for pdf in pdf_files:
-            if os.path.exists(pdf):
-                merger.append(pdf)
-        merger.write(output_pdf)
-        merger.close()
-        print(f"PDF fusionnés avec PyPDF2: {output_pdf}")
-        return True
-    except ImportError:
-        print("PyPDF2 non disponible, tentative avec pdftk...")
-        
-        # Essayer avec pdftk
-        try:
-            cmd = ["pdftk"] + pdf_files + ["cat", "output", output_pdf]
-            subprocess.run(cmd, check=True)
-            print(f"PDF fusionnés avec pdftk: {output_pdf}")
-            return True
-        except (subprocess.SubprocessError, FileNotFoundError):
-            print("pdftk non disponible, tentative avec ghostscript...")
-            
-            # Essayer avec ghostscript
-            try:
-                cmd = ["gs", "-q", "-dNOPAUSE", "-dBATCH", "-sDEVICE=pdfwrite", f"-sOutputFile={output_pdf}"] + pdf_files
-                subprocess.run(cmd, check=True)
-                print(f"PDF fusionnés avec ghostscript: {output_pdf}")
-                return True
-            except (subprocess.SubprocessError, FileNotFoundError):
-                print("Aucun outil de fusion PDF disponible. Installation de PyPDF2 recommandée: pip install PyPDF2")
-                return False
-
-
-def create_book_in_batches(input_dir, output_name, title, author, batch_size=3, create_pdf=True, create_epub=True):
-    """
-    Convertit des fichiers markdown en PDF et/ou EPUB en divisant le travail en lots.
+    Args:
+        input_dir: Répertoire contenant les fichiers markdown
+        output_name: Nom du fichier de sortie (sans extension)
+        title: Titre du livre
+        author: Auteur du livre
+        create_pdf: Booléen indiquant si on doit créer un PDF
+        create_epub: Booléen indiquant si on doit créer un EPUB
     """
     # Vérifier que Pandoc est installé
     try:
@@ -194,21 +168,18 @@ def create_book_in_batches(input_dir, output_name, title, author, batch_size=3, 
         # Créer des copies temporaires des fichiers markdown avec les références d'images mises à jour
         temp_markdown_files = []
         for file_path in markdown_files:
-            try:
-                with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
-                    content = f.read()
-                
-                # Mettre à jour les références d'images
-                updated_content = update_image_references(content, path_mapping)
-                
-                # Écrire le contenu mis à jour dans un fichier temporaire
-                temp_file_path = os.path.join(temp_dir, os.path.basename(file_path))
-                with open(temp_file_path, 'w', encoding='utf-8') as f:
-                    f.write(updated_content)
-                
-                temp_markdown_files.append(temp_file_path)
-            except Exception as e:
-                print(f"Erreur lors du traitement du fichier {file_path}: {e}")
+            with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read()
+            
+            # Mettre à jour les références d'images
+            updated_content = update_image_references(content, path_mapping)
+            
+            # Écrire le contenu mis à jour dans un fichier temporaire
+            temp_file_path = os.path.join(temp_dir, os.path.basename(file_path))
+            with open(temp_file_path, 'w', encoding='utf-8') as f:
+                f.write(updated_content)
+            
+            temp_markdown_files.append(temp_file_path)
 
         # Créer un fichier metadata.yaml pour les métadonnées
         metadata_path = os.path.join(temp_dir, "metadata.yaml")
@@ -226,7 +197,26 @@ toc-depth: 2
 ---
 """)
 
-        # Créer l'EPUB (un seul fichier, généralement moins intensif en mémoire)
+        # Créer le PDF
+        if create_pdf:
+            output_pdf = f"{output_name}.pdf"
+            print(f"\nCréation du PDF: {output_pdf}...")
+            
+            cmd = [
+                "pandoc",
+                "-f", "markdown",
+                "-o", os.path.abspath(output_pdf),  # Utiliser un chemin absolu
+                "--resource-path", temp_dir,  # Définir le chemin de recherche des ressources
+                metadata_path,
+            ] + temp_markdown_files
+            
+            try:
+                subprocess.run(cmd, check=True, cwd=temp_dir)  # Exécuter dans le répertoire temporaire
+                print(f"PDF créé avec succès: {output_pdf}")
+            except subprocess.SubprocessError as e:
+                print(f"Erreur lors de la création du PDF: {e}")
+
+        # Créer l'EPUB
         if create_epub:
             output_epub = f"{output_name}.epub"
             print(f"\nCréation de l'EPUB: {output_epub}...")
@@ -235,70 +225,18 @@ toc-depth: 2
                 "pandoc",
                 "-f", "markdown",
                 "-t", "epub",
-                "-o", os.path.abspath(output_epub),
-                "--resource-path", temp_dir,
+                "-o", os.path.abspath(output_epub),  # Utiliser un chemin absolu
+                "--resource-path", temp_dir,  # Définir le chemin de recherche des ressources
                 "--toc",
                 "--toc-depth=2",
                 metadata_path,
             ] + temp_markdown_files
             
             try:
-                subprocess.run(cmd, check=True, cwd=temp_dir, timeout=600)  # 10 minutes timeout
+                subprocess.run(cmd, check=True, cwd=temp_dir)  # Exécuter dans le répertoire temporaire
                 print(f"EPUB créé avec succès: {output_epub}")
             except subprocess.SubprocessError as e:
                 print(f"Erreur lors de la création de l'EPUB: {e}")
-
-        # Créer le PDF en lots
-        if create_pdf:
-            final_pdf = f"{output_name}.pdf"
-            print(f"\nCréation du PDF par lots: {final_pdf}...")
-            
-            # Diviser les fichiers en lots
-            num_batches = ceil(len(temp_markdown_files) / batch_size)
-            pdf_parts = []
-            
-            for i in range(num_batches):
-                start_idx = i * batch_size
-                end_idx = min(start_idx + batch_size, len(temp_markdown_files))
-                batch = temp_markdown_files[start_idx:end_idx]
-                
-                # Nom du fichier PDF pour ce lot
-                batch_pdf = os.path.join(temp_dir, f"part_{i+1}.pdf")
-                pdf_parts.append(batch_pdf)
-                
-                # Créer le PDF pour ce lot
-                success = create_batch_pdf(batch, temp_dir, batch_pdf, metadata_path)
-                
-                if not success:
-                    print(f"Échec de la création du lot {i+1}/{num_batches}. Tentative avec un lot plus petit...")
-                    
-                    # Essayer avec un lot encore plus petit si nécessaire
-                    for j, file in enumerate(batch):
-                        single_batch_pdf = os.path.join(temp_dir, f"part_{i+1}_{j+1}.pdf")
-                        if create_batch_pdf([file], temp_dir, single_batch_pdf, metadata_path):
-                            if os.path.exists(single_batch_pdf):
-                                pdf_parts.append(single_batch_pdf)
-                                if batch_pdf in pdf_parts:
-                                    pdf_parts.remove(batch_pdf)
-                        time.sleep(1)  # Petite pause entre les conversions
-                
-                # Petite pause entre les lots pour libérer la mémoire
-                time.sleep(2)
-            
-            # Fusionner les PDFs
-            pdf_parts = [p for p in pdf_parts if os.path.exists(p)]
-            if pdf_parts:
-                print(f"Fusion de {len(pdf_parts)} fichiers PDF...")
-                if merge_pdfs(pdf_parts, final_pdf):
-                    print(f"PDF créé avec succès: {final_pdf}")
-                else:
-                    print(f"Échec de la fusion des PDF. Les parties sont disponibles dans: {', '.join(pdf_parts)}")
-                    # Copier les parties dans le répertoire de travail si la fusion échoue
-                    for i, part in enumerate(pdf_parts):
-                        shutil.copy(part, f"{output_name}_part_{i+1}.pdf")
-                    print("Les fichiers PDF partiels ont été copiés dans le répertoire de travail.")
-            else:
-                print("Aucune partie PDF créée. Conversion échouée.")
 
 
 def main():
@@ -307,7 +245,6 @@ def main():
     parser.add_argument("--output", "-o", default="livre", help="Nom du fichier de sortie (sans extension)")
     parser.add_argument("--title", "-t", default="Mon Livre", help="Titre du livre")
     parser.add_argument("--author", "-a", default="Auteur", help="Auteur du livre")
-    parser.add_argument("--batch-size", "-b", type=int, default=3, help="Nombre de fichiers par lot (défaut: 3)")
     parser.add_argument("--pdf-only", action="store_true", help="Créer uniquement le PDF")
     parser.add_argument("--epub-only", action="store_true", help="Créer uniquement l'EPUB")
     
@@ -316,12 +253,11 @@ def main():
     create_pdf = not args.epub_only
     create_epub = not args.pdf_only
     
-    create_book_in_batches(
+    create_book(
         args.input_dir, 
         args.output, 
         args.title, 
-        args.author,
-        batch_size=args.batch_size,
+        args.author, 
         create_pdf=create_pdf, 
         create_epub=create_epub
     )
