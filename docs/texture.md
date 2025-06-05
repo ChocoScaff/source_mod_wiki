@@ -152,4 +152,51 @@ Celle-ci permettent de connaitre mesures avec la taille d'un mur soit 128 sur 12
 
 "*dev_measurewall01c*" mets en avant la taille du joueur.
 
+
+## Fichiers Source des Textures
+
+Dans le SDK 2013, les textures sources sont généralement stockées au format **TGA** (Targa) ou **PFM** (Portable Float Map). Ces formats permettent de conserver une bonne qualité d’image et, dans le cas du PFM, une haute précision pour les textures HDR ou normales.
+
+Pour chaque image source, un fichier **texte** (extension `.txt`) accompagne souvent la texture pour décrire comment elle doit être compilée dans le format final `.vtf`. Ce fichier est lu par les outils de compilation (comme `vtex.exe`) pour appliquer les bons paramètres (mipmaps, compression, type de texture, etc.).
+
+### Exemple de structure :
+
+```txt
+mytexture.tga
+mytexture.txt
+```
+
+### Contenu du fichier `mytexture.txt` :
+```txt
+"nonice" "1"
+"nocompress" "1"
+"mipmap" "1"
+"normal" "1"
+```
+
+Chaque ligne contient un flag de compilation et sa valeur. Ces options contrôlent le comportement du compilateur de texture.
+Tableau des Flags de Compilation
+
+### Tableau des Flags de Compilation
+
+| **Flag**         | **Valeur** | **Description**                                                         |
+|------------------|------------|-------------------------------------------------------------------------|
+| `"dxt1"`         | `1`        | Compression DXT1 (pas d’alpha ou alpha 1-bit)                           |
+| `"dxt5"`         | `1`        | Compression DXT5 (avec canal alpha 8-bit)                               |
+| `"nocompress"`   | `1`        | Ne pas compresser la texture                                            |
+| `"mipmap"`       | `1`        | Générer des mipmaps                                                     |
+| `"nomipmap"`     | `1`        | Ne pas générer de mipmaps                                               |
+| `"normal"`       | `1`        | Texture de type normal map                                              |
+| `"translucent"`  | `1`        | Indique une texture avec transparence                                   |
+| `"skybox"`       | `1`        | Indique une texture pour le ciel (skybox)                               |
+| `"cubemap"`      | `1`        | Spécifie que la texture est une cubemap                                 |
+| `"anisotropic"`  | `1`        | Active le filtrage anisotrope                                           |
+| `"nonice"`       | `1`        | Évite les artefacts de compression sur les bords                        |
+
+
+Remarque : L’ordre ou la présence de certains flags dépend du type de texture. Une texture de ciel aura par exemple le flag "skybox", tandis qu’une normal map aura "normal" et "nocompress".
+
+
+Tu peux maintenant coller ce bloc dans ton fichier `texture.md` à l’endroit souhaité. Si tu veux que 
+
 <div style="page-break-after: always"></div>
