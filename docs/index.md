@@ -11,7 +11,7 @@ Depuis Valve met à disposition des développeurs pour créer ses propres jeux, 
 
 Le moteur est gratuit d'utilisation pour faire des mods amateurs et peut être publier sur steam en s'inscrivant sur <https://partner.steamgames.com/doc/gettingstarted/onboarding>, le moteur peut engendrer des frais de licence pour des mods payant.
 
-Il permet de copier sur le disque dur des sources permettant de développer un mod soit à partir de Half-Life 2, soit Half-Life 2: Deathmatch, soit from scratch sur une base réputée plus solide et maintenue régulièrement par Valve, ou bien à partir du code source uniquement. Les sources sont prévues pour être compilées avec le compilateur de Visual Studio .NET 2003 et liées par des fichiers .sln et .vcproj qui sont les formats natifs de Visual Studio. Une fois les sources compilées, un fichier client.dll et un fichier server.dll sont générés, qui seront ensuite chargés par n'importe quel exécutable hl2.exe.
+Il permet de copier sur le disque dur des sources permettant de développer un mod soit à partir de Half-Life 2, soit Half-Life 2: Deathmatch, soit from scratch sur une base réputée plus solide et maintenue régulièrement par Valve, ou bien à partir du code source uniquement. Les sources sont prévues pour être compilées avec le compilateur de Visual Studio .NET 2013 et liées par des fichiers .sln et .vcproj qui sont les formats natifs de Visual Studio. Une fois les sources compilées, un fichier client.dll et un fichier server.dll sont générés, qui seront ensuite chargés par n'importe quel exécutable hl2.exe.
 
 De nombreux jeux et mods ont vu le jour grâce à ce moteur car il fut l'un des premiers moteurs 3D à disposition du grand publique.
 
